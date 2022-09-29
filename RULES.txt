@@ -1,0 +1,6 @@
+1. Fix the odd way of using useState variable
+
+2. Don't expose code directly to the component body, that changes the state. Put it inside some function which is called at appropriate locations.
+(HINT: That will rerun during every render and will cause infinite renders)
+
+3. Introduce use of useEffect, useCallback and useMemo hooks.
