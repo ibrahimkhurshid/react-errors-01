@@ -1,16 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function MyComponent() {
-  const numbers = useState([])
+  const [numbers, setNumbers] = useState([])
 
-  fetch('./numbers.json')
-    .then((res) => res.json())
-    .then((data) => (numbers[0] = data))
+  const retreiveNumbers = () => {
+    fetch('./numbers.json')
+      .then((res) => res.json())
+      .then((data) => setNumbers(data))
+  }
+
+  useEffect(() => { retreiveNumbers() }, [])
 
   return (
     <div>
-      Numbers: {JSON.stringify(numbers[0])}
+      {console.log("render")}
+      Numbers: {JSON.stringify(numbers)}
     </div>
   );
 }
